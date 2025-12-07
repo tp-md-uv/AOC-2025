@@ -42,32 +42,23 @@ My code for [Advent of Code 2025](https://adventofcode.com/2025), written in C++
 
 ### Quick Start
 
-From the `2025/` directory, you can use the master Makefile to run solutions:
+From the `2025/` directory, run the bash script:
 
 ```bash
+# Run all solutions (default - no arguments needed!)
+./run_all.sh
+
 # Run all Part 1 solutions
-make run-all-part1
+./run_all.sh part1
 
 # Run all Part 2 solutions
-make run-all-part2
-
-# Run everything (both parts, all days)
-make run-all
+./run_all.sh part2
 
 # Run specific days (e.g., days 3-7)
-make run-range START=3 END=7
+./run_all.sh range 3 7
 
 # Benchmark all solutions with timing
-make benchmark
-
-# Build all executables
-make build-all
-
-# Clean compiled files
-make clean-all
-
-# Show help
-make help
+./run_all.sh benchmark
 ```
 
 ### Individual Days
