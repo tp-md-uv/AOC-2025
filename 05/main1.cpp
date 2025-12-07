@@ -48,7 +48,7 @@ int main() {
         }
         done = (line == "");
     }
-    cout << "Num fresh " << num_fresh << endl;
+    cout << "Total:  " << num_fresh << endl;
     auto end = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
     cout << "Time: " << duration.count() << " ms" << endl;

@@ -3,10 +3,13 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
+#include <chrono>
 
 using namespace std;
 
 int main() {
+    auto start = chrono::high_resolution_clock::now();
+    
     ifstream infile;
     ifstream data("example.txt");
     vector<char> rotation;
@@ -30,11 +33,9 @@ int main() {
         num %= 100;
         if (rot == 'L'){
             dig -= num;
-            cout << dig << endl;
         }
         else {
             dig += num;
-            cout << dig << endl;        
         }
         if (dig > 100){
             total += 1;
@@ -52,9 +53,11 @@ int main() {
         }
         was_zero = (dig == 0); // don't add if we come from zero
     }
-    cout << "TOTAL" << endl;
-    cout << total << endl;
+    cout << "Total: " << total << endl;
 
+    auto end = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
+    cout << "Time: " << duration.count() << " ms" << endl;
     return 0;
 
 }

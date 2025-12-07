@@ -55,8 +55,8 @@ void beam_split(vector<vector<char>> &grid){
         // print_grid(grid);
         // cout << endl << "----------------------------------" << endl;
     }
-    print_grid(grid);
-    cout << "#Splits " << num_splits << endl;
+    // print_grid(grid);
+    cout << "Total: " << num_splits << endl;
 }
 
 int main() {

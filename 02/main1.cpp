@@ -52,6 +52,7 @@ long int check_range(long int low, long int high) {
 }
 
 int main() {
+    auto start = chrono::high_resolution_clock::now();
     ifstream data("example.txt");
     string line, range;
     long int total = 0;
@@ -65,7 +66,7 @@ int main() {
             total += check_range(low, high);
         }
     }
-    cout << "total " << total << endl;
+    cout << "Total: " << total << endl;
     // cout << "True: " << 1227775554 << endl;
     
     auto end = chrono::high_resolution_clock::now();

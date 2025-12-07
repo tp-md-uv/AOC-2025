@@ -1,6 +1,6 @@
 # 🎄 Advent of Code 2024 🎄
 
-My code for [Advent of Code 2024](https://adventofcode.com/2025), written in C++.
+My code for [Advent of Code 2025](https://adventofcode.com/2025), written in C++.
 
 ---
 
@@ -9,31 +9,17 @@ My code for [Advent of Code 2024](https://adventofcode.com/2025), written in C++
 | AoC Puzzle | Part One | Part Two | Type (Part 1) | Type (Part 2) | Difficulty (Part 1) | Difficulty (Part 2) |
 |------------|--------------------|--------------------|---------------|---------------|--------------------|--------------------|
 | [Day 1: Secret Entrance](01/) | 1.1 ✅ | 1.2 ✅ | Modulo | Count + modulo | 🟢 Easy | 🟢 Easy |
-| [Day 2: Gift Shop](02/) | 2.1 ✅ | 2.2 ✅ | Substring magic | Same | 🟢 Easy | 🟢 Easy |
-| [Day 3: Lobby](03/) | 3.1 ✅ | 3.2 ✅ | Regular expressions | Added logic statements | 🟢 Easy | 🟢 Easy |
-| [Day 4: Printing Department](04/) | 4.1 ✅ | 4.2 ✅ | Words in a grid, in a line | Diagonal/circular word search | 🟢 Easy | 🟢 Easy |
-| [Day 5: Cafeteria ](05/) | 5.1 ✅ | 5.2 ✅ | Ordering numbers | Different ordering | 🟢 Easy | 🟢 Easy |
-| [Day 6: Trash Compactor](06/) | 6.1 ✅ | 6.2 ✅ | Grid simulation | Storing path and direction (or brute force) | 🟢 Easy | 🟢 Easy |
-| [Day 7: Laboratories ](07/) | 7.1 ✅ | 7.2 ✅ | Recursion | Added rules | 🟡 Medium | 🟡 Medium |
-| [Day 8: Resonant Collinearity](08/) | 8.1 ✅ | 8.2 ✅ | Grid string search | Adaptation to 8.1 | 🟢 Easy | 🟢 Easy |
-| [Day 9: Disk Fragmenter](09/) | 9.1 ✅ | 9.2 ✅ | String manipulation | Memory allocation | 🟢 Easy | 🟢 Easy |
-| [Day 10: Hoof It](10/) | 10.1 ✅ | 10.2 ✅ | Neighbouring grid values | Counting paths | 🟢 Easy | 🟢 Easy |
-| [Day 11: Plutonian Pebbles](11/) | 11.1 ✅ | 11.2 ✅ | Recursion | Recursion | 🟢 Easy | 🟡 Medium |
-| [Day 12: Garden Groups](12/) | 12.1 ✅ | 12.2 ✅ | Regions in grid | Borders of regions | 🟡 Medium | 🟡 Medium |
-| [Day 13: Claw Contraption](day13/) | 13.1 ✅ | 13.2 ✅ | Linear algebra | Linear algebra | 🟢 Easy | 🟢 Easy |
-| [Day 14: Restroom Redoubt](day14/) | 14.1 ✅ | 14.2 ✅ | Simulation of steps in a grid | Visual inspection | 🟡 Medium | 🟡 Medium |
-| [Day 15: Warehouse Woes](day15/) | 15.1 ✅ | 15.2 ✅ | Moving objects in a grid | More advanced part 1 | 🟢 Easy | 🟡 Medium |
-| [Day 16: Reindeer Maze](day16/) | 16.1 ✅ | 16.2 ✅❌ | Dijkstra with a twist | Unique paths from Dijkstra | 🔴 Hard  | 🔴 Hard ❌ |
-| [Day 17: Chronospatial Computer](day17/) | 17.1 ✅ | 17.2 ✅❌ | Logic operations | Input hacking | 🟢 Easy | 🔴 Hard ❌ |
-| [Day 18: RAM Run](day18/) | 18.1 ✅ | 18.2 ✅ | BFS | Checking when no path in a grid | 🟢 Easy | 🟢 Easy |
-| [Day 19: Linen Layout](day19/) | 19.1 ✅ | 19.2 ✅❌ | Recursion | Recursion and keeping track of paths | 🔴 Hard | 🔴 Hard ❌ |
-| [Day 20: Race Condition](day20/) | 20.1 ✅ | 20.2 ✅ | BFS/Dijkstra | Changing grid/possible paths to reach end | 🟡 Medium | 🟡 Medium |
-| [Day 21: Keypad Conundrum](day21/) | 21.1 ✅ | 21.2 ✅❌ | Brute force | Recursion | 🟡 Medium | 🔴 Hard ❌ |
-| [Day 22: Monkey Market](day22/) | 22.1 ✅ | 22.2 ✅ | Looping over data and following rules | Extracting as much info in one loop | 🟡 Medium | 🟡 Medium |
-| [Day 23: LAN Party](day23/) | 23.1 ✅ | 23.2 ✅ | Graphs, connected components | Largest connected components | 🟢 Easy | 🟡 Medium |
-| [Day 24: Crossed Wires](day24/) | 24.1 ✅ | 24.2 ✅❌ | Following rules, looping over data | Ripple carry adder | 🟢 Easy | 🔴 Hard ❌ |
-| [Day 25: Code Chronicle](day25/) | 25.1 ✅ | 25.2 ✅ | Grid parsing | N.A. | 🟢 Easy | N.A. |
-
+| [Day 2: Gift Shop](02/) | 2.1 ✅ | 2.2 ✅ | Patterns in substring | Slightly more difficult patterns in substring | 🟢 Easy | 🟢 Easy |
+| [Day 3: Lobby](03/) | 3.1 ✅ | 3.2 ✅ | Search max elements in list | Search larger numbers in a list | 🟢 Easy | 🟡 Medium |
+| [Day 4: Printing Department](04/) | 4.1 ✅ | 4.2 ✅ | Checking grid elements | Changing grid based on condition | 🟢 Easy | 🟢 Easy |
+| [Day 5: Cafeteria ](05/) | 5.1 ✅ | 5.2 ✅ | Check element in range | Merging ranges | 🟢 Easy | 🟢 Easy |
+| [Day 6: Trash Compactor](06/) | 6.1 ✅ | 6.2 ✅ | Read out calculation from input | Parsing input in a smart way | 🟢 Easy | 🟡 Medium |
+| [Day 7: Laboratories ](07/) | 7.1 ✅ | 7.2 ✅ | Loop in grid | Hidden Pascal's triangle | 🟢 Easy | 🟡 Medium |
+| [Day 8: ](08/) | 8.1 ✅ | 8.2 ✅ | Grid string search | Adaptation to 8.1 | 🟢 Easy | 🟢 Easy |
+| [Day 9: ](09/) | 9.1 ✅ | 9.2 ✅ | String manipulation | Memory allocation | 🟢 Easy | 🟢 Easy |
+| [Day 10: ](10/) | 10.1 ✅ | 10.2 ✅ | Neighbouring grid values | Counting paths | 🟢 Easy | 🟢 Easy |
+| [Day 11: ](11/) | 11.1 ✅ | 11.2 ✅ | Recursion | Recursion | 🟢 Easy | 🟡 Medium |
+| [Day 12: ](12/) | 12.1 ✅ | 12.2 ✅ | Regions in grid | Borders of regions | 🟡 Medium | N.A |
 ---
 
 ## ⭐ Legend
@@ -48,17 +34,60 @@ My code for [Advent of Code 2024](https://adventofcode.com/2025), written in C++
 
 ---
 
-## Notes for Future Years
+## Building and Running
 
-### **Things I would do differently:**
-- When modifying values in a grid, build in **checks for elements that shouldn't be changed**.  
-  - Example: Count the number of elements that should remain the same before and after the simulation.  
-  - This would have saved me a lot of time in **Day 15 Part 2**!  
-- When parsing data into a grid, **use `map()` and `list()`** to make the code **more concise** while maintaining **readability**.
+### Prerequisites
+- C++ compiler (g++)
+- Make
 
-### **Tips for next years:**
-- **Practice recursion problems**.  
-- **Rewrite** difficult problems after seeing **smarter/easier** solution methods.  
-- **Debug visually** when working with grids (print intermediate steps!).  
+### Quick Start
+
+From the `2025/` directory, you can use the master Makefile to run solutions:
+
+```bash
+# Run all Part 1 solutions
+make run-all-part1
+
+# Run all Part 2 solutions
+make run-all-part2
+
+# Run everything (both parts, all days)
+make run-all
+
+# Run specific days (e.g., days 3-7)
+make run-range START=3 END=7
+
+# Benchmark all solutions with timing
+make benchmark
+
+# Build all executables
+make build-all
+
+# Clean compiled files
+make clean-all
+
+# Show help
+make help
+```
+
+### Individual Days
+
+Navigate to any day's folder (e.g., `01/`) and use its Makefile:
+
+```bash
+cd 01/
+
+# Build and run Part 1
+make run1
+
+# Build and run Part 2
+make run2
+
+# Build both parts
+make all
+
+# Clean compiled files
+make clean
+```
 
 ---

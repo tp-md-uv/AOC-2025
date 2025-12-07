@@ -26,7 +26,7 @@ bool is_correct(long int num){
         if (sub_str.size() > size) {continue;}
         if (sub_str == str_num){
             // If we are the same, it is invalid, so we return false.
-            cout << num << " is invalid." << endl;
+            // cout << num << " is invalid." << endl;
             return false;
         }
     }
@@ -36,7 +36,7 @@ bool is_correct(long int num){
 
 long int check_range(long int low, long int high) {
     long int total = 0;
-    cout << "low " << low << " high " << high << endl;
+    // cout << "low " << low << " high " << high << endl;
     for (long int i = low; i < high + 1; i++){
         bool check = is_correct(i);
         if (!check){
@@ -50,6 +50,7 @@ long int check_range(long int low, long int high) {
 
 
 int main() {
+    auto start = chrono::high_resolution_clock::now();
     ifstream data("example.txt");
     string line, range;
     long int total = 0;
@@ -63,8 +64,7 @@ int main() {
             total += check_range(low, high);
         }
     }
-    cout << "total " << total << endl;
-    cout << "True: " << 1227775554 << endl;
+    cout << "Total: " << total << endl;
     
     auto end = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);

@@ -20,10 +20,6 @@ bool is_int(const string &s){
     return true;
 }
 
-void print_grid(const vector<vector<string>> &grid){
-    for (auto row : grid) print_vec(row);
-}
-
 bool is_down_empty(const vector<vector<string>> &grid, const int &i, const int &j){
     // check if the pos immediately down is available 
     return ((grid[i+1][j] == ".") || (is_int(grid[i + 1][j])));
@@ -45,7 +41,7 @@ void count_timelines(const vector<vector<string>> &grid){
         if (!is_int(grid[grid.size()-1][j])) continue;
         num_paths += stol(grid[grid.size()-1][j]);
     }
-    cout << "Total number of paths " << num_paths << endl;
+    cout << "Total: " << num_paths << endl;
 }
 
 void beam_split(vector<vector<string>> &grid){
@@ -76,8 +72,8 @@ void beam_split(vector<vector<string>> &grid){
             }
         }
     }
-    cout << endl;
-    print_grid(grid);
+    // cout << endl;
+    // print_grid(grid);
 }
 
 int main() {
@@ -91,7 +87,7 @@ int main() {
         for (char c : line) row.push_back(string(1, c));
         grid.push_back(row);
     }
-    print_grid(grid);
+    // print_grid(grid);
     beam_split(grid);
     count_timelines(grid);
     auto end = chrono::high_resolution_clock::now();

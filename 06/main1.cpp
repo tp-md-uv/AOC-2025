@@ -79,7 +79,7 @@ int main() {
     //     print_vec(row);
     // }
     long int total = do_homework(numbers, operators);
-    cout << "TOTAL " << total << endl;
+    cout << "Total:  " << total << endl;
     auto end = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
     cout << "Time: " << duration.count() << " ms" << endl;

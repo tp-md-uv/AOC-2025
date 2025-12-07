@@ -86,7 +86,7 @@ vector<vector<long int>> merge(vector<vector<long int>> ranges){
 
         // cout << "New merged " << endl;
         // print_vec_vec(merged_ranges);
-        i += 1;
+        i ++;
     }
     // cout << "FINAL merged " << endl;
     // print_vec_vec(merged_ranges);
@@ -118,7 +118,7 @@ int main() {
         ranges.push_back(range);
     }
     sort(ranges.begin(), ranges.end()); // Sorts vector of vectors based on first element    cout << "ORIGINAL RANGES " <<endl; 
-    print_vec_vec(ranges);
+    // print_grid(ranges);
     // now do set intersection
     int old_size = ranges.size();
     vector<vector<long int>> new_range = merge(ranges);
@@ -127,12 +127,12 @@ int main() {
          new_range = merge(new_range);
     }
     // cout << "FINAL FINAL RANGES " <<endl; 
-    print_vec_vec(new_range);  
+    // print_grid(new_range);  
     long int total = 0;
     for (int k = 0; k < new_range.size(); k++){
         total += new_range[k][1] - new_range[k][0] + 1;
     }
-    cout << "TOTAL INGR " << total << endl;
+    cout << "Total:  " << total << endl;
 
     auto end = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);

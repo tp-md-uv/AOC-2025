@@ -28,10 +28,10 @@ long int do_homework_vertically(vector<string> numbers, string op){
         }
         digits.push_back(digit_num);
     }
-    cout << endl << "DIGITS " << endl;
-    for (auto x : digits){
-      print_vec(x);
-    } 
+    // cout << endl << "DIGITS " << endl;
+    // for (auto x : digits){
+    //   print_vec(x);
+    // } 
 
     // now parse vertically
     int digits_size = digits.size();
@@ -47,12 +47,12 @@ long int do_homework_vertically(vector<string> numbers, string op){
         for (int k = 0; k < col_res_size; k++){
             col_res_sum += pow(10, col_res_size - 1 - k) * col_res[k];;
         }
-        cout << "Col res sum (" << op << ") " << col_res_sum << endl;
+        // cout << "Col res sum (" << op << ") " << col_res_sum << endl;
         if (col_res_sum == 0) continue;
         if (op == "+") total += col_res_sum;
         else if (op == "*") total *= col_res_sum;
     }
-    cout << "Subtotal " << total << endl;
+    // cout << "Subtotal " << total << endl;
     return total;
 }
 
@@ -66,7 +66,7 @@ int main() {
 
     vector<string> data_lines;
     while (getline(data, line)) {
-        cout << "line " << line << endl;
+        // cout << "line " << line << endl;
         if (line.find('*') != std::string::npos || line.find('+') != std::string::npos){
             stringstream ss(line);
             string op;
@@ -75,10 +75,10 @@ int main() {
         }
         data_lines.push_back(line);
     }
-    cout << "Data lines ";
-    print_vec(data_lines);
-    cout << "Operator lines ";
-    print_vec(operators);
+    // cout << "Data lines ";
+    // print_vec(data_lines);
+    // cout << "Operator lines ";
+    // print_vec(operators);
     // We'll look for cols where ALL elements are spaces
     vector<bool> is_space(data_lines[0].size(), true);
     for (int j = 0; j < data_lines[0].size(); j++){
@@ -91,9 +91,9 @@ int main() {
             };
         }
     }
-    for (int k = 0; k < is_space.size(); k++){
-        if (is_space[k]) cout << "VERTICAL SPACE " << k << " " << is_space.size() << endl;
-    }
+    // for (int k = 0; k < is_space.size(); k++){
+    //     if (is_space[k]) cout << "VERTICAL SPACE " << k << " " << is_space.size() << endl;
+    // }
     int left_bdry = 0;
     int right_bdry;
     int op_idx = 0;
@@ -120,7 +120,7 @@ int main() {
         total += do_homework_vertically(l, operators[op_idx]);
         op_idx += 1;
     }
-    cout << "TOTAL " << total << endl;
+    cout << "Total:  " << total << endl;
     auto end = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
     cout << "Time: " << duration.count() << " ms" << endl;
