@@ -10,11 +10,11 @@ My code for [Advent of Code 2024](https://adventofcode.com/2025), written in C++
 |------------|--------------------|--------------------|---------------|---------------|--------------------|--------------------|
 | [Day 1: Secret Entrance](01/) | 1.1 ✅ | 1.2 ✅ | Modulo | Count + modulo | 🟢 Easy | 🟢 Easy |
 | [Day 2: Gift Shop](02/) | 2.1 ✅ | 2.2 ✅ | Substring magic | Same | 🟢 Easy | 🟢 Easy |
-| [Day 3: Mull It Over](03/) | 3.1 ✅ | 3.2 ✅ | Regular expressions | Added logic statements | 🟢 Easy | 🟢 Easy |
-| [Day 4: Ceres Search](04/) | 4.1 ✅ | 4.2 ✅ | Words in a grid, in a line | Diagonal/circular word search | 🟢 Easy | 🟢 Easy |
-| [Day 5: Print Queue](05/) | 5.1 ✅ | 5.2 ✅ | Ordering numbers | Different ordering | 🟢 Easy | 🟢 Easy |
-| [Day 6: Guard Gallivant](06/) | 6.1 ✅ | 6.2 ✅ | Grid simulation | Storing path and direction (or brute force) | 🟢 Easy | 🟢 Easy |
-| [Day 7: Bridge Repair](07/) | 7.1 ✅ | 7.2 ✅ | Recursion | Added rules | 🟡 Medium | 🟡 Medium |
+| [Day 3: Lobby](03/) | 3.1 ✅ | 3.2 ✅ | Regular expressions | Added logic statements | 🟢 Easy | 🟢 Easy |
+| [Day 4: Printing Department](04/) | 4.1 ✅ | 4.2 ✅ | Words in a grid, in a line | Diagonal/circular word search | 🟢 Easy | 🟢 Easy |
+| [Day 5: Cafeteria ](05/) | 5.1 ✅ | 5.2 ✅ | Ordering numbers | Different ordering | 🟢 Easy | 🟢 Easy |
+| [Day 6: Trash Compactor](06/) | 6.1 ✅ | 6.2 ✅ | Grid simulation | Storing path and direction (or brute force) | 🟢 Easy | 🟢 Easy |
+| [Day 7: Laboratories ](07/) | 7.1 ✅ | 7.2 ✅ | Recursion | Added rules | 🟡 Medium | 🟡 Medium |
 | [Day 8: Resonant Collinearity](08/) | 8.1 ✅ | 8.2 ✅ | Grid string search | Adaptation to 8.1 | 🟢 Easy | 🟢 Easy |
 | [Day 9: Disk Fragmenter](09/) | 9.1 ✅ | 9.2 ✅ | String manipulation | Memory allocation | 🟢 Easy | 🟢 Easy |
 | [Day 10: Hoof It](10/) | 10.1 ✅ | 10.2 ✅ | Neighbouring grid values | Counting paths | 🟢 Easy | 🟢 Easy |
