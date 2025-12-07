@@ -1,4 +1,5 @@
 # Day 06 - Trash Compactor
+<img width="640" height="599" alt="image" src="https://github.com/user-attachments/assets/084e20a6-bb2a-4378-9064-38dc3e7ed46f" />
 
 ## Part 1
 
