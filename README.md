@@ -8,18 +8,18 @@ My code for [Advent of Code 2025](https://adventofcode.com/2025), written in C++
 
 | AoC Puzzle | Part One | Part Two | Type (Part 1) | Type (Part 2) | Difficulty (Part 1) | Difficulty (Part 2) |
 |------------|--------------------|--------------------|---------------|---------------|--------------------|--------------------|
-| [Day 1: Secret Entrance](01/) | 1.1 ✅ | 1.2 ✅ | Modulo | Count + modulo | 🟢 Easy | 🟢 Easy |
-| [Day 2: Gift Shop](02/) | 2.1 ✅ | 2.2 ✅ | Patterns in substring | Slightly more difficult patterns in substring | 🟢 Easy | 🟢 Easy |
-| [Day 3: Lobby](03/) | 3.1 ✅ | 3.2 ✅ | Search max elements in list | Search larger numbers in a list | 🟢 Easy | 🟡 Medium |
-| [Day 4: Printing Department](04/) | 4.1 ✅ | 4.2 ✅ | Checking grid elements | Changing grid based on condition | 🟢 Easy | 🟢 Easy |
-| [Day 5: Cafeteria](05/) | 5.1 ✅ | 5.2 ✅ | Check element in range | Merging ranges | 🟢 Easy | 🟢 Easy |
-| [Day 6: Trash Compactor](06/) | 6.1 ✅ | 6.2 ✅ | Read out calculation from input | Parsing input in a smart way | 🟢 Easy | 🟡 Medium |
-| [Day 7: Laboratories](07/) | 7.1 ✅ | 7.2 ✅ | Loop in grid | Hidden Pascal's triangle | 🟢 Easy | 🟡 Medium |
-| [Day 8: Playground](08/) | 8.1 ✅ | 8.2 ✅ | Grid string search | Adaptation to 8.1 | 🟢 Easy | 🟢 Easy |
-| [Day 9: Movie Theater](09/) | 9.1 ✅ | 9.2 ✅ | String manipulation | Memory allocation | 🟢 Easy | 🟢 Easy |
-| [Day 10: Factory](10/) | 10.1 ✅ | 10.2 ✅ | Neighbouring grid values | Counting paths | 🟢 Easy | 🟢 Easy |
-| [Day 11: Reactor](11/) | 11.1 ✅ | 11.2 ✅ | Recursion | Recursion | 🟢 Easy | 🔴 ❌ |
-| [Day 12: Christmas Tree Farm](12/) | 12.1 ✅ | 12.2 ✅ | Regions in grid | Borders of regions | 🟡 Medium | N.A |
+| [Day 1: Secret Entrance](01/) | 1.1 ✅ | 1.2 ✅ | Modulo | Count + modulo | 🟢 | 🟢 |
+| [Day 2: Gift Shop](02/) | 2.1 ✅ | 2.2 ✅ | Patterns in substring | Slightly more difficult patterns in substring | 🟢 | 🟢 |
+| [Day 3: Lobby](03/) | 3.1 ✅ | 3.2 ✅ | Search max elements in list | Search larger numbers in a list | 🟢 | 🟡 |
+| [Day 4: Printing Department](04/) | 4.1 ✅ | 4.2 ✅ | Checking grid elements | Changing grid based on condition | 🟢 | 🟢 |
+| [Day 5: Cafeteria](05/) | 5.1 ✅ | 5.2 ✅ | Check element in range | Merging ranges | 🟢 | 🟢 |
+| [Day 6: Trash Compactor](06/) | 6.1 ✅ | 6.2 ✅ | Read out calculation from input | Parsing input in a smart way | 🟢 | 🟡 |
+| [Day 7: Laboratories](07/) | 7.1 ✅ | 7.2 ✅ | Loop in grid | Hidden Pascal's triangle | 🟢 | 🟡 |
+| [Day 8: Playground](08/) | 8.1 ✅ | 8.2 ✅ | Grid string search | Adaptation to 8.1 | 🟢 | 🟢 |
+| [Day 9: Movie Theater](09/) | 9.1 ✅ | 9.2 ✅ | String manipulation | Memory allocation | 🟢 |  |
+| [Day 10: Factory](10/) | 10.1 ✅ | 10.2 ✅ | Neighbouring grid values | Counting paths |  |  |
+| [Day 11: Reactor](11/) | 11.1 ✅ | 11.2 ❌ | Recursion | Recursion | 🟢 | 🔴 |
+| [Day 12: Christmas Tree Farm](12/) | 12.1 ✅ | 12.2 ✅ | Regions in grid | Borders of regions |  | N.A |
 ---
 
 ## ⭐ Legend
