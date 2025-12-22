@@ -13,6 +13,9 @@
 #include "../helpers.h"
 using namespace std;
 
+
+// Ah, so it's kind of a DFS + cachaing. Working out the entire example is useful.
+
 long int compute_paths(const unordered_map<string, vector<string>> &device_map, const string &key, bool fft, bool dac, map<tuple<string, bool, bool>, long int> &cache){
     // Check and update if we visit fft or dac
     if (key == "fft") fft = true;
@@ -38,7 +41,6 @@ long int compute_paths(const unordered_map<string, vector<string>> &device_map, 
             total += compute_paths(device_map,  device, fft, dac, cache);
         }
     }
-    // why here?
     cache[cache_key] = total;
 
     return total;

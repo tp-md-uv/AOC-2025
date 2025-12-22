@@ -16,10 +16,10 @@ My code for [Advent of Code 2025](https://adventofcode.com/2025), written in C++
 | [Day 6: Trash Compactor](06/) | 6.1 ✅ | 6.2 ✅ | Read out calculation from input | Parsing input in a smart way | 🟢 | 🟡 |
 | [Day 7: Laboratories](07/) | 7.1 ✅ | 7.2 ✅ | Loop in grid | Hidden Pascal's triangle | 🟢 | 🟡 |
 | [Day 8: Playground](08/) | 8.1 ✅ | 8.2 ✅ | Grid string search | Adaptation to 8.1 | 🟢 | 🟢 |
-| [Day 9: Movie Theater](09/) | 9.1 ✅ | 9.2 ✅ | String manipulation | Memory allocation | 🟢 |  |
-| [Day 10: Factory](10/) | 10.1 ✅ | 10.2 ✅ | Neighbouring grid values | Counting paths |  |  |
-| [Day 11: Reactor](11/) | 11.1 ✅ | 11.2 ❌ | Recursion | Recursion | 🟢 | 🔴 |
-| [Day 12: Christmas Tree Farm](12/) | 12.1 ✅ | 12.2 ✅ | Regions in grid | Borders of regions |  | N.A |
+| [Day 9: Movie Theater](09/) | 9.1 ✅ | 9.2  | String manipulation | Memory allocation | 🟢 |  |
+| [Day 10: Factory](10/) | 10.1  | 10.2  | Neighbouring grid values | Counting paths |  |  |
+| [Day 11: Reactor](11/) | 11.1 ✅ | 11.2 ❌ | Recursion | DFS + memoization | 🟢 | 🔴 |
+| [Day 12: Christmas Tree Farm](12/) | 12.1  | 12.2  | Regions in grid | Borders of regions |  | N.A |
 ---
 
 ## ⭐ Legend
