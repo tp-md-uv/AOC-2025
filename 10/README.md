@@ -38,23 +38,36 @@ $$
 
 Written differently as matrix equation:
 
-```
-┌                    ┐ ┌     ┐   ┌   ┐
-│ 0  0  0  0  1  1 │ │ b₁ │   │ 3 │
-│ 0  1  0  0  0  1 │ │ b₂ │   │ 5 │
-│ 0  0  1  0  1  0 │ │ b₃ │ = │ 4 │
-│ 1  1  0  1  0  0 │ │ b₄ │   │ 7 │
-└                    ┘ │ b₅ │   └   ┘
-                       │ b₆ │
-                       └     ┘
-```
+$$
+\begin{array}{|cccccc|}
+0 & 0 & 0 & 0 & 1 & 1 \\
+0 & 1 & 0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 & 1 & 0 \\
+1 & 1 & 0 & 1 & 0 & 0 \\
+\end{array}
+\begin{array}{|c|}
+b_1 \\
+b_2 \\
+b_3 \\
+b_4 \\
+b_5 \\
+b_6 \\
+\end{array}
+=
+\begin{array}{|c|}
+3 \\
+5 \\
+4 \\
+7 \\
+\end{array}
+$$
 
-Or more compactly: **A** **b** = **J**
+Or more compactly: $A\mathbf{b} = \mathbf{J}$
 
 Where:
-- **A** is the coefficient matrix (4×6)
-- **b** is the button press vector (6×1) 
-- **J** is the joltage requirement vector (4×1)
+- $A$ is the coefficient matrix (4×6)
+- $\mathbf{b}$ is the button press vector (6×1) 
+- $\mathbf{J}$ is the joltage requirement vector (4×1)
 
 If the goal was to just solve this system of linear equations, the problem would not be that difficult. However, there are more constraints:
 
