@@ -82,7 +82,6 @@ void backtrack_k(
     }
 }
 
-
 void perform_press(vector<char> &lights, const vector<int> &buttons){
     for (const int &idx : buttons){
         if (lights[idx] == '.') lights[idx] = '#';
