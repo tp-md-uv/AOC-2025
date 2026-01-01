@@ -19,7 +19,7 @@ My code for [Advent of Code 2025](https://adventofcode.com/2025), written in C++
 | [Day 9: Movie Theater](09/) | 9.1 ✅ | 9.2 ✅ | Computing area | Checking if a point is in a polygon | 🟢 | 🔴 |
 | [Day 10: Factory](10/) | 10.1 ✅ | 10.2  | Brute forcing options | | 🟡 |  |
 | [Day 11: Reactor](11/) | 11.1 ✅ | 11.2 ❌ | Recursion | DFS + memoization | 🟢 | 🔴 |
-| [Day 12: Christmas Tree Farm](12/) | 12.1  | 12.2  |  |  |  | N.A |
+| [Day 12: Christmas Tree Farm](12/) | 12.1  | 12.2  | Backtracking | N.A. | 🟡  | N.A |
 ---
 
 ## ⭐ Legend
