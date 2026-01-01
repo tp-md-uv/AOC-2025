@@ -39,19 +39,19 @@ $$
 Written differently:
 
 $$
-\begin{pmatrix}
+\begin{bmatrix}
 0 & 0 & 0 & 0 & 1 & 1 \\
 0 & 1 & 0 & 0 & 0 & 1 \\
 0 & 0 & 1 & 0 & 1 & 0 \\
 1 & 1 & 0 & 1 & 0 & 0
-\end{pmatrix}
-\begin{pmatrix}
+\end{bmatrix}
+\begin{bmatrix}
 b_1 \\ b_2 \\ b_3 \\ b_4 \\ b_5 \\ b_6
-\end{pmatrix}
+\end{bmatrix}
 =
-\begin{pmatrix}
+\begin{bmatrix}
 3 \\ 5 \\ 4 \\ 7
-\end{pmatrix}
+\end{bmatrix}
 $$
 
 Or more compactly: $A\mathbf{b} = \mathbf{J}$
