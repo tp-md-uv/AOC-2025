@@ -36,25 +36,25 @@ b_1 + b_2 + 0 \cdot b_3 + b_4 + 0 \cdot b_5 + 0 \cdot b_6 &= 7
 \end{align}
 $$
 
-Written differently:
+Written differently as matrix equation:
 
-$$
-\begin{bmatrix}
-0 & 0 & 0 & 0 & 1 & 1 \\
-0 & 1 & 0 & 0 & 0 & 1 \\
-0 & 0 & 1 & 0 & 1 & 0 \\
-1 & 1 & 0 & 1 & 0 & 0
-\end{bmatrix}
-\begin{bmatrix}
-b_1 \\ b_2 \\ b_3 \\ b_4 \\ b_5 \\ b_6
-\end{bmatrix}
-=
-\begin{bmatrix}
-3 \\ 5 \\ 4 \\ 7
-\end{bmatrix}
-$$
+```
+┌                    ┐ ┌     ┐   ┌   ┐
+│ 0  0  0  0  1  1 │ │ b₁ │   │ 3 │
+│ 0  1  0  0  0  1 │ │ b₂ │   │ 5 │
+│ 0  0  1  0  1  0 │ │ b₃ │ = │ 4 │
+│ 1  1  0  1  0  0 │ │ b₄ │   │ 7 │
+└                    ┘ │ b₅ │   └   ┘
+                       │ b₆ │
+                       └     ┘
+```
 
-Or more compactly: $A\mathbf{b} = \mathbf{J}$
+Or more compactly: **A** **b** = **J**
+
+Where:
+- **A** is the coefficient matrix (4×6)
+- **b** is the button press vector (6×1) 
+- **J** is the joltage requirement vector (4×1)
 
 If the goal was to just solve this system of linear equations, the problem would not be that difficult. However, there are more constraints:
 
