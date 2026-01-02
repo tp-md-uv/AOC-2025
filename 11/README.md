@@ -31,12 +31,18 @@ ggg: out
 hhh: out
 ```
 
-There are 8 total paths from `svr` to `out`, but only 2 paths visit both `dac` and `fft`:
+There are 8 total paths from `svr` to `out`:
 
-1. `svr,aaa,fft,ccc,eee,dac,fff,ggg,out`
-2. `svr,aaa,fft,ccc,eee,dac,fff,hhh,out`
+1. `svr,aaa,fft,ccc,ddd,hub,fff,ggg,out` - visits `fft` only ❌
+2. `svr,aaa,fft,ccc,ddd,hub,fff,hhh,out` - visits `fft` only ❌
+3. **`svr,aaa,fft,ccc,eee,dac,fff,ggg,out`** - visits both `fft` and `dac` ✓
+4. **`svr,aaa,fft,ccc,eee,dac,fff,hhh,out`** - visits both `fft` and `dac` ✓
+5. `svr,bbb,tty,ccc,ddd,hub,fff,ggg,out` - visits neither ❌
+6. `svr,bbb,tty,ccc,ddd,hub,fff,hhh,out` - visits neither ❌
+7. `svr,bbb,tty,ccc,eee,dac,fff,ggg,out` - visits `dac` only ❌
+8. `svr,bbb,tty,ccc,eee,dac,fff,hhh,out` - visits `dac` only ❌
 
-Both valid paths must go through `aaa` → `fft` (to visit the `fft` checkpoint) and then `eee` → `dac` (to visit the `dac` checkpoint).
+Only 2 paths are valid (paths 3 and 4). Both must go through `aaa` → `fft` to visit the first checkpoint, and then through `eee` → `dac` to visit the second checkpoint.
 
 ### Why Naive Recursion Fails
 
@@ -48,7 +54,7 @@ A naive DFS would explore every path independently, but this graph has **converg
 
 Without caching, when we reach a convergence point like `ccc` from different paths, we would recompute the subproblem "count paths from `ccc` to `out` with constraints" multiple times.
 
-### State Space Formulation
+### The Caching Strategy
 
 The key insight is that we don't need to remember the entire path history, only:
 
@@ -56,37 +62,11 @@ The key insight is that we don't need to remember the entire path history, only:
 2. **Whether we've visited** `fft`
 3. **Whether we've visited** `dac`
 
-Define the state as:
+We define our cache with a three-part key: **(node, visited_fft, visited_dac)**
 
-$$\text{State} = (v, F, D) \in V \times \{0, 1\} \times \{0, 1\}$$
+The value stored is: **number of valid paths from this state to `out`**
 
-where:
-- $v \in V$ is the current node
-- $F \in \{0, 1\}$ indicates whether `fft` has been visited
-- $D \in \{0, 1\}$ indicates whether `dac` has been visited
-
-The dynamic programming value function is:
-
-$$P(v, F, D) = \text{number of valid paths from node } v \text{ to } \texttt{out}$$
-
-with the constraint that we must visit both checkpoints.
-
-### Recurrence Relation
-
-The recursive structure is:
-
-$$
-P(v, F, D) = \begin{cases}
-1 & \text{if } v = \texttt{out} \text{ and } F = 1 \text{ and } D = 1 \\
-0 & \text{if } v = \texttt{out} \text{ and } (F = 0 \text{ or } D = 0) \\
-\sum_{u \in N(v)} P(u, F', D') & \text{otherwise}
-\end{cases}
-$$
-
-where $N(v)$ are the neighbors of $v$, and:
-
-$$F' = F \lor (v = \texttt{fft})$$
-$$D' = D \lor (v = \texttt{dac})$$
+When we reach a node, we check if we've already computed the answer for this exact combination of (position, fft_visited, dac_visited). If yes, we return the cached result. If no, we compute it recursively and store it.
 
 ### Cache Walkthrough
 
@@ -116,98 +96,84 @@ $$P(\texttt{fft}, 1, 0) = P(\texttt{ccc}, 1, 0)$$
 
 **Step 4**: Compute $P(\texttt{ccc}, 1, 0)$
 
-From `ccc` we have two paths:
+From `ccc` we have two precursion starting from `svr` with both flags false (haven't visited `fft` or `dac` yet).
 
-$$P(\texttt{ccc}, 1, 0) = P(\texttt{ddd}, 1, 0) + P(\texttt{eee}, 1, 0)$$
+**Starting point**: `("svr", false, false)`
 
-**Cache entry created**: `("ccc", 1, 0)` stores this result
+From `svr` we explore two branches:
+- Path via `aaa` 
+- Path via `bbb`
 
-**Step 5**: Compute $P(\texttt{ddd}, 1, 0)$ → $P(\texttt{hub}, 1, 0)$ → $P(\texttt{fff}, 1, 0)$
+#### Following the `aaa` branch first:
 
-Following the chain `ddd` → `hub` → `fff`, we eventually reach:
+**At `aaa`**: `("aaa", false, false)` → goes to `fft`
 
-$$P(\texttt{fff}, 1, 0) = P(\texttt{ggg}, 1, 0) + P(\texttt{hhh}, 1, 0)$$
+**At `fft`**: `("fft", true, false)` - now we've visited `fft`! → goes to `ccc`
 
-Both branches lead to `out` without having visited `dac` ($D = 0$), so:
+**At `ccc`**: `("ccc", true, false)` - visited `fft`, not `dac` yet
 
-$$P(\texttt{ggg}, 1, 0) = P(\texttt{out}, 1, 0) = 0$$
-$$P(\texttt{hhh}, 1, 0) = P(\texttt{out}, 1, 0) = 0$$
+From `ccc` we have two options: `ddd` or `eee`
 
-Therefore: $P(\texttt{fff}, 1, 0) = 0$
+**Branch 1 - via `ddd`**: 
+- `("ddd", true, false)` → `("hub", true, false)` → `("fff", true, false)`
+- At `fff` we can go to `ggg` or `hhh`, both lead to `out`
+- But reaching `out` with `("out", true, false)` returns 0 (missing `dac`)
+- Result: **paths 1 and 2 above are invalid**
 
-**Cache entry created**: `("fff", 1, 0) = 0` (visited `fft` but not `dac`)
+**Cache entry**: `("fff", true, false) = 0`
 
-**Step 6**: Compute $P(\texttt{eee}, 1, 0)$
+**Branch 2 - via `eee`**:
+- `("eee", true, false)` → goes to `dac`
+- `("dac", true, true)` - now we've visited both! → goes to `fff`
+- `("fff", true, true)` - both checkpoints visited!
+- From `fff` → `ggg` → `out`: `("out", true, true)` returns 1 ✓
+- From `fff` → `hhh` → `out`: `("out", true, true)` returns 1 ✓
+- Result: **paths 3 and 4 are valid!**
 
-From `eee` we go to `dac`, which sets $D = 1$:
+**Cache entries**: 
+- `("fff", true, true) = 2` (2 ways to reach `out` from here)
+- `("ccc", true, false) = 0 + 2 = 2` (the answer for this state)
 
-$$P(\texttt{eee}, 1, 0) = P(\texttt{dac}, 1, 1)$$
+#### Following the `bbb` branch:
 
-**Step 7**: Compute $P(\texttt{dac}, 1, 1)$ → $P(\texttt{fff}, 1, 1)$
+**At `bbb`**: `("bbb", false, false)` → `("tty", false, false)` → `("ccc", false, false)`
 
-Now we reach `fff` with both checkpoints visited:
+**At `ccc`**: `("ccc", false, false)` - haven't visited `fft` yet!
 
-$$P(\texttt{fff}, 1, 1) = P(\texttt{ggg}, 1, 1) + P(\texttt{hhh}, 1, 1)$$
-$$P(\texttt{ggg}, 1, 1) = P(\texttt{out}, 1, 1) = 1$$
-$$P(\texttt{hhh}, 1, 1) = P(\texttt{out}, 1, 1) = 1$$
+This is a *different cache state* than `("ccc", true, false)` we saw before.
 
-Therefore: $P(\texttt{fff}, 1, 1) = 2$
+From `ccc`, again two branches:
 
-**Cache entry created**: `("fff", 1, 1) = 2` (both checkpoints visited, 2 ways to reach `out`)
+**Branch 1 - via `ddd`**:
+- Path reaches `out` without visiting either checkpoint
+- Result: **paths 5 and 6 are invalid**
 
-**Step 8**: Back to $P(\texttt{ccc}, 1, 0)$
+**Cache entry**: `("fff", false, false) = 0`
 
-$$P(\texttt{ccc}, 1, 0) = P(\texttt{ddd}, 1, 0) + P(\texttt{eee}, 1, 0) = 0 + 2 = 2$$
+**Branch 2 - via `eee`**:
+- `("eee", false, false)` → `("dac", false, true)` - visited `dac` but not `fft`
+- `("fff", false, true)` - still missing `fft`!
+- Reaching `out` with only `dac` visited returns 0
+- Result: **paths 7 and 8 are invalid**
 
-**Step 9**: Compute $P(\texttt{bbb}, 0, 0)$
+**Cache entries**:
+- `("fff", false, true) = 0`
+- `("ccc", false, false) = 0`
 
-Now the second branch from `svr`:
+**Final computation**:
 
-$$P(\texttt{bbb}, 0, 0) = P(\texttt{tty}, 0, 0) = P(\texttt{ccc}, 0, 0)$$
+Total from `svr` = paths via `aaa` + paths via `bbb` = 2 + 0 = **2 valid paths**
 
-**Step 10**: Compute $P(\texttt{ccc}, 0, 0)$
+Notice that `fff` appears in the cache with **four different states**, each yielding different results:
 
-Notice we're at `ccc` again, but now with $F = 0, D = 0$ (different state than before):
+- `("fff", true, true) = 2`: Both checkpoints visited → 2 ways to reach `out` (via `ggg` or `hhh`)
+- `("fff", true, false) = 0`: Only `fft` visited → can't reach `dac` anymore → 0 valid paths
+- `("fff", false, true) = 0`: Only `dac` visited → can't reach `fft` anymore → 0 valid paths
+- `("fff", false, false) = 0`: Neither visited → can never satisfy the constraint → 0 valid paths
 
-$$P(\texttt{ccc}, 0, 0) = P(\texttt{ddd}, 0, 0) + P(\texttt{eee}, 0, 0)$$
+Similarly, `ccc` appears with different states:
 
-Following the `ddd` → `hub` → `fff` path with $F = 0, D = 0$ leads to:
+- `("ccc", true, false) = 2`: Visited `fft`, can still reach `dac` via `eee` branch
+- `("ccc", false, false) = 0`: Haven't visited `fft` and can't reach it anymore
 
-$$P(\texttt{fff}, 0, 0) = 0$$
-
-**Cache entry created**: `("fff", 0, 0) = 0` (neither checkpoint visited)
-
-Following the `eee` → `dac` path with $F = 0, D = 0$ leads to:
-
-$$P(\texttt{dac}, 0, 1) = P(\texttt{fff}, 0, 1)$$
-$$P(\texttt{fff}, 0, 1) = 0$$
-
-**Cache entry created**: `("fff", 0, 1) = 0` (visited `dac` but not `fft`)
-
-Therefore: $P(\texttt{ccc}, 0, 0) = 0$
-
-**Final Answer**:
-
-$$P(\texttt{svr}, 0, 0) = P(\texttt{aaa}, 0, 0) + P(\texttt{bbb}, 0, 0) = 2 + 0 = 2$$
-
-### Key Cache Entries
-
-The cache stores distinct states:
-
-- `("ccc", 1, 0) = 2`: Reached `ccc` after visiting `fft`, can still visit `dac` → 2 valid paths
-- `("ccc", 0, 0) = 0`: Reached `ccc` without visiting `fft`, cannot visit it anymore → 0 valid paths  
-- `("fff", 1, 1) = 2`: Reached `fff` with both checkpoints visited → 2 ways to reach `out`
-- `("fff", 1, 0) = 0`: Reached `fff` with only `fft` visited → 0 valid paths (can't reach `dac`)
-- `("fff", 0, 1) = 0`: Reached `fff` with only `dac` visited → 0 valid paths (can't reach `fft`)
-- `("fff", 0, 0) = 0`: Reached `fff` with neither visited → 0 valid paths
-
-Notice that `fff` appears in the cache with four different states, each yielding different results. This demonstrates why the cache key must be the **tuple of (node, visited_fft, visited_dac)** rather than just the node.
-
-### Complexity Analysis
-
-**Without caching**: The algorithm would explore all 8 paths independently, recomputing subproblems at every convergence point. For larger graphs, this becomes exponential in the number of paths.
-
-**With caching**: The state space has size $|V| \times 2 \times 2 = 4|V|$, where $|V|$ is the number of nodes. Each state is computed at most once, giving us $O(4|V|)$ complexity, effectively linear in the graph size.
-
-For the actual problem input with hundreds of nodes and potentially millions of paths, caching is essential.
-
+If we only cached by node name (e.g., just `"fff"`), we'd incorrectly reuse the first computed value for all subsequent visits, regardless of whether we'd visited the checkpoints. This would give wrong answers
