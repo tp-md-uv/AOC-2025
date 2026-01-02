@@ -38,7 +38,7 @@ $$
 
 Written differently as matrix equation:
 
-$
+$$
 \begin{bmatrix}
 0 & 0 & 0 & 0 & 1 & 1 \\
 0 & 1 & 0 & 0 & 0 & 1 \\
@@ -60,7 +60,7 @@ b_6 \\
 4 \\
 7 \\
 \end{bmatrix}
-$
+$$
 
 Or more compactly: $A\mathbf{b} = \mathbf{J}$
 
