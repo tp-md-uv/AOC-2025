@@ -33,7 +33,6 @@ bool is_correct(long int num){
     return true;
 }
 
-
 long int check_range(long int low, long int high) {
     long int total = 0;
     // cout << "low " << low << " high " << high << endl;
@@ -46,8 +45,6 @@ long int check_range(long int low, long int high) {
     }
     return total;
 }
-
-
 
 int main() {
     auto start = chrono::high_resolution_clock::now();
