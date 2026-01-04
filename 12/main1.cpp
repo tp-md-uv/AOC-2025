@@ -263,7 +263,7 @@ bool canFitInGrid(const vector<Shape>& shapes, const Constraint& c) {
     }
     
     if (totalShapeArea > gridArea) {
-        cout << "Grid area: " << gridArea << ", Shape area needed: " << totalShapeArea << endl;
+        // cout << "Grid area: " << gridArea << ", Shape area needed: " << totalShapeArea << endl;
         return false;
     }
     
@@ -376,16 +376,16 @@ int main() {
         int numSolutions = solve(shapes, constraint, grid, counter, placementId, solutionGrid);
         hasSolution[constraintIdx] = (numSolutions > 0);
         
-        if (numSolutions > 0) {
-            cout << "Constraint " << constraintIdx << " - Solution found:" << endl;
-            for (const auto& row : solutionGrid) {
-                for (int cell : row) {
-                    cout << (cell == 0 ? '.' : to_string(cell)[0]) << " ";
-                }
-                cout << endl;
-            }
-            cout << endl;
-        }
+        // if (numSolutions > 0) {
+        //     cout << "Constraint " << constraintIdx << " - Solution found:" << endl;
+        //     for (const auto& row : solutionGrid) {
+        //         for (int cell : row) {
+        //             cout << (cell == 0 ? '.' : to_string(cell)[0]) << " ";
+        //         }
+        //         cout << endl;
+        //     }
+        //     cout << endl;
+        // }
     }
     
     // Print summary
@@ -393,10 +393,9 @@ int main() {
     for (bool solved : hasSolution) {
         if (solved) solutionCount++;
     }
-    
     auto end = chrono::high_resolution_clock::now();
+    cout << "Total: " << solutionCount << endl;
     auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
-    cout << "Constraints with solutions: " << solutionCount << " / " << constraints.size() << " (" << duration.count() << " ms)" << endl;
-    
+    cout << "Time: " << duration.count() << " ms" << endl;
     return 0;
 }

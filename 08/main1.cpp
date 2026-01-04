@@ -67,8 +67,6 @@ void print_edges(const map<tuple<int, int, int>, tuple<int, int, int>>& E) {
     }
 }
 
-
-
 bool in_different_components(const vector<set<tuple<int, int, int>>> &components, const tuple<int, int, int> &p1, const tuple<int, int, int> &p2, int &idx_1, int &idx_2){
     // for each component, check if p1 and p2 are in there. Return the idx
     for (int i=0; i < components.size(); i++){
@@ -128,19 +126,19 @@ int main() {
     // compute the distances between all points.
     int i = 0;
     for (auto x : dist_map){
-        cout << "Distance: " << x.first << endl;
-        cout << x.first << " ";
-        print_point(x.second[0]);
-        cout << " ";
-        print_point(x.second[1]); 
-        cout << endl;
+        // cout << "Distance: " << x.first << endl;
+        // cout << x.first << " ";
+        // print_point(x.second[0]);
+        // cout << " ";
+        // print_point(x.second[1]); 
+        // cout << endl;
         E[x.second[0]] = x.second[1];
         i ++;
         if (i > 10) break;
     }   
 
-    cout << "Number elements in dist map " << dist_map.size() << endl;
-    cout << endl << endl << "Constructing the components" << endl;
+    // cout << "Number elements in dist map " << dist_map.size() << endl;
+    // cout << endl << endl << "Constructing the components" << endl;
     // cout << "Printing the edges " << endl;
     // print_edges(E);
     vector<set<tuple<int, int, int>>> components;
@@ -181,8 +179,8 @@ int main() {
             // merge
 
             // Add the second set into the first one, then remove the second set
-            cout << "Merging " <<  components[idx_1].size() << " " << components[idx_2].size() <<    endl;
-            cout << endl;
+            // cout << "Merging " <<  components[idx_1].size() << " " << components[idx_2].size() <<    endl;
+            // cout << endl;
 
             components[idx_1].insert(components[idx_2].begin(), components[idx_2].end());
             components.erase(components.begin() + idx_2);
@@ -222,21 +220,21 @@ int main() {
             components.push_back(new_component); // add the new component
         }
     } // end loop over distance map
-    cout << "Num connections " << num_connections << endl;
+    // cout << "Num connections " << num_connections << endl;
     // Print out the components
     vector<int> sizes;
     for (int i = 0; i < components.size(); i++) {
         sizes.push_back(components[i].size());
-        cout << "Component " << i << " (size " << components[i].size() << "): ";
-        for (const auto& point : components[i]) {
-            print_point(point);
-            cout << " ";
-        }
-        cout << endl;
+        // cout << "Component " << i << " (size " << components[i].size() << "): ";
+        // for (const auto& point : components[i]) {
+        //     print_point(point);
+        //     cout << " ";
+        // }
+        // cout << endl;
     }
     sort(sizes.begin(), sizes.end(), greater<>());
 
-    cout << sizes[0] << " * " << sizes[1] << " * " << sizes[2] << endl;
+    // cout << sizes[0] << " * " << sizes[1] << " * " << sizes[2] << endl;
     cout << "Total: " << sizes[0]*sizes[1]*sizes[2] << endl;
 
     auto end = chrono::high_resolution_clock::now();
