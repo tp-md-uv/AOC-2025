@@ -5,14 +5,21 @@
 #include <cmath>
 #include <sstream>
 #include <chrono>
-
+#include <set>
 using namespace std;
 
 bool is_correct(long int num){
+    // static set<long int> added;
+    // if (added.find(num) != added.end()){
+    //     // Don't check again
+    //     cout << "Found" << endl;
+    //     return true;
+    // }
     // actually build the str from substrings
     // cout << "\nParsing " << num << endl;
     string str_num = to_string(num);
     int size = str_num.size();
+
 
     for (int j = 0; j < size / 2; j++){
         // Only need to go up to half the size
@@ -30,6 +37,19 @@ bool is_correct(long int num){
             return false;
         }
     }
+    // added.insert(num);
+    return true;
+}
+
+bool is_valid(long int &num){
+    string str_num = to_string(num);
+    string double_str_num = str_num + str_num;
+    // cout << "Double str " << double_str_num << endl; 
+    int t = double_str_num.find(str_num, 1);
+    // cout << "Find at pos: " << t << endl;
+    if (double_str_num.find(str_num, 1) != str_num.size()){
+        return false;
+    }
     return true;
 }
 
@@ -37,11 +57,10 @@ long int check_range(long int low, long int high) {
     long int total = 0;
     // cout << "low " << low << " high " << high << endl;
     for (long int i = low; i < high + 1; i++){
-        bool check = is_correct(i);
-        if (!check){
-            // if invalid, we sum
-            total += i;
-        }
+        // total += is_correct(i);
+        if (is_valid(i)) continue;
+        // cout << "Adding " << i << endl;
+        total += i;
     }
     return total;
 }
@@ -59,6 +78,7 @@ int main() {
             char dash;
             ss2 >> low >> dash >> high;
             total += check_range(low, high);
+            // break;
         }
     }
     cout << "Total: " << total << endl;
