@@ -9,6 +9,7 @@
 #include <cassert>
 #include <string>
 #include <chrono>
+#include <numeric>
 #include "../helpers.h"
 using namespace std;
 
@@ -356,6 +357,15 @@ int solve(const vector<Shape>& shapes, Constraint& c, vector<vector<int>>& grid,
     return totalSolutions;
 }
 
+bool solve_greedy(Constraint& c){
+    // We do not care about the shape at all. We just see it as a 3x3 block
+    
+    // We just place each block in it's own 3x3 square, packing the grid
+    // in a greedy way.
+    return (c.width / 3) * (c.height / 3) >= accumulate(c.shapeCounts.begin(), c.shapeCounts.end(), 0);
+} 
+
+
 int main() {
     auto start = chrono::high_resolution_clock::now();
     
@@ -373,10 +383,11 @@ int main() {
         int counter = 1;
         int placementId = 1;
         
-        int numSolutions = solve(shapes, constraint, grid, counter, placementId, solutionGrid);
+        // int numSolutions = solve(shapes,     , grid, counter, placementId, solutionGrid);
+        int numSolutions = solve_greedy(constraint);
         hasSolution[constraintIdx] = (numSolutions > 0);
         
-        // if (numSolutions > 0) {
+        // if (numSolutions >= 0) {
         //     cout << "Constraint " << constraintIdx << " - Solution found:" << endl;
         //     for (const auto& row : solutionGrid) {
         //         for (int cell : row) {
