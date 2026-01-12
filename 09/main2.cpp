@@ -231,14 +231,14 @@ int main() {
             vector<vector<int>> corners = get_corners(p1, p2);
             if (corners.size() == 2) continue; // Do not check if the points are on a horizontal or vertical line.
             if (!check_valid(extra_layer, p1, p2)) continue;
-            cout << "Valid : " << endl;
-            cout << "(i, j) " << i << " " << j << endl; 
-            cout << "p1: ";
-            print_vec(p1);
-            cout << "p2: ";
-            print_vec(p2);
-            cout << "Area: " << area << endl;
-            cout << endl << endl;
+            // cout << "Valid : " << endl;
+            // cout << "(i, j) " << i << " " << j << endl; 
+            // cout << "p1: ";
+            // print_vec(p1);
+            // cout << "p2: ";
+            // print_vec(p2);
+            // cout << "Area: " << area << endl;
+            // cout << endl << endl;
             if (area > max_area) max_area = area;
         } 
     }

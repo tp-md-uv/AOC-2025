@@ -118,13 +118,13 @@ int solve(const LineData &linedata){
         model m = opt.get_model();
         int result = m.eval(totalPresses).get_numeral_int();
         
-        // Print the solution
-        cout << "Solution found - Total presses: " << result << endl;
-        cout << "Button values: ";
-        for (size_t i = 0; i < buttonVars.size(); i++) {
-            cout << "b" << i << "=" << m.eval(buttonVars[i]) << " ";
-        }
-        cout << endl;
+        // // Print the solution
+        // cout << "Solution found - Total presses: " << result << endl;
+        // cout << "Button values: ";
+        // for (size_t i = 0; i < buttonVars.size(); i++) {
+        //     cout << "b" << i << "=" << m.eval(buttonVars[i]) << " ";
+        // }
+        // cout << endl;
         
         return result;
     } else {

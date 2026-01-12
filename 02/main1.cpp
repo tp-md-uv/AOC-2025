@@ -37,7 +37,6 @@ bool is_correct(long int num){
     return true;
 }
 
-
 long int check_range(long int low, long int high) {
     long int total = 0;
     // cout << "low " << low << " high " << high << endl;
